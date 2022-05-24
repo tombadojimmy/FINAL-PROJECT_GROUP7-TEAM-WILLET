@@ -1,0 +1,909 @@
+<?php 
+include('admin/dbconnection.php');
+?>
+<?php include 'header.php';?>
+
+<div class="container">
+  <h2 class="recipetop">Recipe's for Friday</h2>
+  <br>
+
+<h3 class="h3center">Breakfast</h3>
+  <div class="row">
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Friday' AND RecipeTime='Breakfast' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+  </div>
+<br>
+
+<h3 class="h3center">Lunch</h3>
+<div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Wednesday' AND RecipeTime='Lunch' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+</div>
+<br>
+
+<h3 class="h3center">Dinner</h3>
+<div class="row">
+
+<?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Friday' AND RecipeTime='Dinner' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+</div>
+<br>
+
+<?php include 'footer.php';?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Meal System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+<nav class="shadow1 navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Weekly Meal Plan
+    </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="monday.php">Monday</a></li>
+        <li><a class="dropdown-item" href="tuesday.php">Tuesday</a></li>
+        <li><a class="dropdown-item" href="wednesday.php">Wednesday</a></li>
+        <li><a class="dropdown-item" href="thursday.php">Thursday</a></li>
+        <li><a class="dropdown-item" href="friday.php">Friday</a></li>
+        <li><a class="dropdown-item" href="saturday.php">Saturday</a></li>
+        <li><a class="dropdown-item" href="sunday.php">Sunday</a></li>
+      </ul>
+      </div>
+
+      <li class="nav-item">
+        <a class="nav-link" href="healthy-recipes.php">Healthy-Recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="aboutus.php">About Us</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+<?php include 'header.php';?>
+
+<div class="container healthyrecipeimage">
+  <h2 class="recipetop healthyrecipetext">Healthy Recipes</h2>
+  <br>
+  <br>
+  <br>
+  <p class ="healthyrecipetext">While eating fads come and go, there are a few key elements to healthy eating that remain unchanged.
+   Healthy foods are those that provide you with the nutrients you need to sustain your body’s well-being and retain energy. Water, carbohydrates, fat, protein, vitamins, and minerals are the key nutrients that make up a healthy, balanced diet.
+   Healthy eating means eating a variety of foods that give you the nutrients you need to maintain your health, feel good, and have energy. These nutrients include protein, carbohydrates, fat, water, vitamins, and minerals.
+   Nutrition is important for everyone. When combined with being physically active and maintaining a healthy weight, eating well is an excellent way to help your body stay strong and healthy. If you have a history of breast cancer or are currently undergoing treatment, eating well is especially important for you. What you eat can affect your immune system, your mood, and your energy level.</p>
+   <br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top imagesize" src="./images/healthy/tilapia.jpg" />
+        <div class="card-body">
+          <h5 class="card-title">Pan-Fried Tilapia</h5>
+          <p class="card-text">Tilapia can get a bad wrap. It's not tender and fatty like salmon, nor is it firm and flavorful like tuna. It's sort of an in-between fish, and can often be written off as boring. No more! We're here to vouch for tilapia; it has so much to offer! It's lean and inexpensive, making it a great choice for your next weeknight dinner. Follow a few simple rules and take this affordable filet from zero to hero.</p>
+          <a href="https://www.delish.com/cooking/recipe-ideas/a25137966/pan-fried-tilapia-recipe/" class="btn btn-primary">Read On</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top imagesize" src="./images/healthy/taco.jpg" />
+        <div class="card-body">
+          <h5 class="card-title">Taco Tomatoes</h5>
+          <p class="card-text">We're all for a genius low-carb hack — and these tomatoes totally deliver. We had never thought to stuff them with taco meat, cheese, and sour cream, but we'll do anything in the name of ditching a tortilla for a low-carb meal. You can change up the fillings for cheeseburger tomatoes, too.</p>
+          <a href="https://www.delish.com/cooking/recipe-ideas/g3733/healthy-dinner-recipes/?slide=7" class="btn btn-primary">Read On</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top imagesize" src="./images/healthy/shrimp.png" />
+        <div class="card-body">
+          <h5 class="card-title">Honey Walnut Shrimp</h5>
+          <p class="card-text">Honey Walnut Shrimp is a classic dish from Hong Kong that many Americans know about thanks to Panda Express and many other. The dish is popular at many Chinese restaurants as well. Our version of this slightly sweet dish more closely represents the fast food version. Ones you may find in Hong Kong have very lightly battered shrimp whereas Panda Express has a thicker and heavier coating for that extra crispy bite. </p>
+          <a href="https://www.delish.com/cooking/recipe-ideas/g3733/healthy-dinner-recipes/?slide=12" class="btn btn-primary">Read On</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+
+<h4 class="delish"></h><b><a href="https://www.delish.com/cooking/recipe-ideas/g3733/healthy-dinner-recipes/?slide=13" target="_blank">-Link for more Healthy Recipes-</a></b></h4>
+<p class="delish">81 Healthy Dinners You'll Actually Look Forward To Eating</p>
+
+<?php include 'footer.php';?>
+
+<?php include 'header.php';?>
+
+<div class="hero-image">
+  <div class="hero-text">
+    <h1 style="font-size:50px">Foodish Suggestion and Arranging Meals System</h1>
+    <p>A recipe is a story that ends with a good meal.</p>
+    
+  </div>
+</div>
+
+<?php include 'footer.php';?>
+<?php 
+include('admin/dbconnection.php');
+?>
+<?php include 'header.php';?>
+
+<div class="container">
+  <h2 class="recipetop">Recipe's for Monday</h2>
+  <br>
+
+<h3 class="h3center">Breakfast</h3>
+  <div class="row">
+    <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Monday' AND RecipeTime='Breakfast' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?> 
+  </div>
+<br>
+
+<h3 class="h3center">Lunch</h3>
+<div class="row">
+<?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Monday' AND RecipeTime='Lunch' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+  <?php } ?>
+</div>
+<br>
+
+<h3 class="h3center">Dinner</h3>
+<div class="row">
+
+<?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Monday' AND RecipeTime='Dinner' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+  <?php } ?>
+
+</div>
+<br>
+
+
+<?php include 'footer.php';?>
+
+<?php 
+include('admin/dbconnection.php');
+?>
+<?php include 'header.php';?>
+
+<div class="container">
+  <h2 class="recipetop">Recipe's for Saturday</h2>
+  <br>
+<h3 class="h3center">Breakfast</h3>
+  <div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Saturday' AND RecipeTime='Breakfast' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?> 
+
+  </div>
+<br>
+
+<h3 class="h3center">Lunch</h3>
+<div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Saturday' AND RecipeTime='Lunch' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?> 
+
+</div>
+<br>
+
+<h3 class="h3center">Dinner</h3>
+<div class="row">
+
+<?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Saturday' AND RecipeTime='Dinner' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?> 
+</div>
+<br>
+
+<?php include 'footer.php';?>
+
+<?php 
+include('admin/dbconnection.php');
+?>
+<?php include 'header.php';?>
+
+<div class="container">
+  <h2 class="recipetop">Recipe's for Sunday</h2>
+  <br>
+
+<h3 class="h3center">Breakfast</h3>
+  <div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Sunday' AND RecipeTime='Breakfast' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+  </div>
+<br>
+
+<h3 class="h3center">Lunch</h3>
+<div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Sunday' AND RecipeTime='Lunch' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+</div>
+<br>
+
+<h3 class="h3center">Dinner</h3>
+<div class="row">
+
+<?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Sunday' AND RecipeTime='Dinner' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+</div>
+<br>
+
+<?php include 'footer.php';?>
+
+<?php 
+include('admin/dbconnection.php');
+?>
+<?php include 'header.php';?>
+
+<div class="container">
+  <h2 class="recipetop">Recipe's for Thursday</h2>
+  <br>
+
+<h3 class="h3center">Breakfast</h3>
+  <div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Thursday' AND RecipeTime='Breakfast' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+  </div>
+<br>
+
+<h3 class="h3center">Lunch</h3>
+<div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Thursday' AND RecipeTime='Lunch' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+</div>
+<br>
+
+<h3 class="h3center">Dinner</h3>
+<div class="row">
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Thursday' AND RecipeTime='Dinner' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+</div>
+<br>
+
+
+<?php include 'footer.php';?>
+
+<?php 
+include('admin/dbconnection.php');
+?>
+<?php include 'header.php';?>
+
+<div class="container">
+  <h2 class="recipetop">Recipe's for Tuesday</h2>
+  <br>
+
+<h3 class="h3center">Breakfast</h3>
+  <div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Tuesday' AND RecipeTime='Breakfast' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+  </div>
+<br>
+
+<h3 class="h3center">Lunch</h3>
+<div class="row">
+
+<?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Tuesday' AND RecipeTime='Lunch' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+</div>
+<br>
+
+<h3 class="h3center">Dinner</h3>
+<div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Tuesday' AND RecipeTime='Dinner' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+</div>
+<br>
+
+
+<?php include 'footer.php';?>
+
+<?php 
+include('admin/dbconnection.php');
+?>
+<?php include 'header.php';?>
+
+<div class="container">
+  <h2 class="recipetop">Recipe's for Wednesday</h2>
+  <br>
+
+<h3 class="h3center">Breakfast</h3>
+  <div class="row">
+
+  <?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Wednesday' AND RecipeTime='Breakfast' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+  </div>
+<br>
+
+<h3 class="h3center">Lunch</h3>
+<div class="row">
+
+<?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Wednesday' AND RecipeTime='Lunch' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+</div>
+<br>
+
+<h3 class="h3center">Dinner</h3>
+<div class="row">
+
+<?php
+    $ret=mysqli_query($con,"select * from recipes where RecipeDay='Wednesday' AND RecipeTime='Dinner' ");
+    $cnt=1;
+    $row=mysqli_num_rows($ret);
+    if($row>0){
+    while ($row=mysqli_fetch_array($ret)) {
+    ?>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top imagesize" src="/admin/recipepics/<?php  echo $row['RecipePhoto'];?>" />
+          <div class="card-body">
+            <h5 class="card-title"><?php  echo $row['RecipeTitle'];?></h5>
+            <p class="card-text"><?php  echo $row['RecipeDescription'];?></p>
+            <a href="<?php  echo $row['RecipeUrl'];?>" class="btn btn-primary" target="_blank">Read On</a>
+          </div>
+        </div>
+      </div>
+    <?php $cnt=$cnt+1;} } else { ?>
+      <p style="text-align:center;" colspan="6">No Recipe</p>
+    <?php } ?>
+
+</div>
+<br>
+
+
+<?php include 'footer.php';?>
+
+<?php include 'header.php';?>
+  <div class="about-section">
+  <br>
+  <div class="container aboutusimage ">
+   <h1 class="aboutusimagetext">About Us</h1>
+   <p class="aboutusimagetext">The person that will use our program or what you called the user, maybe most of them is a girl/woman.</p>
+   <br>
+   <p class="aboutusimagetext">We decided to call this system as “Foodish Suggestion and Arranging Meals System. Some of us
+     worrying what would be our meal for today and this system can give you an idea. For example our
+     breakfast, so this system can give you an idea of what you should eat for breakfast and it can also give
+     you information about that kind of food you’ll going to cook. If you are also worrying about of what you
+     going to eat for a week, you can arrange it.</p>
+   </div>
+   </div>
+   <br>
+   
+ <h2 class= "our-team">Our Team</h2> <br>
+
+ <div class="row">
+
+   <div class="col-md-3">
+     <div class="card our-team">
+       <img class="imagesizeaboutus"src="./images/aboutus/jimmy.jpg" alt="" style="width:100%">
+       <div class="container">
+          <h4>Jimmy Tombado Jr.</h4>
+      
+       </div>
+     </div>
+   </div>
+
+
+   <div class="col-md-3">
+     <div class="card our-team">
+       <img class="imagesizeaboutus"src="./images/aboutus/beato.jpg" alt="" style="width:100%">
+       <div class="container">
+          <h4>Jhemar Beato</h4>
+         
+       </div>
+     </div>
+   </div>
+
+   <div class="col-md-3">
+     <div class="card our-team">
+       <img class="imagesizeaboutus"src="./images/aboutus/johnreyramos.jpg" alt="" style="width:100%">
+       <div class="container">
+          <h4>John Rey Ramos</h4>
+         
+       </div>
+     </div>
+   </div>
+
+   <div class="col-md-3">
+     <div class="card our-team">
+       <img class="imagesizeaboutus"src="/images/aboutus/sain.jpg" alt="" style="width:100%">
+       <div class="container">
+          <h4>Kenneth Sain</h4>
+         
+
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <div class="col-md-3">
+     <div class="card our-team">
+       <img class="imagesizeaboutus"src="/images/aboutus/ella.jpg" alt="" style="width:100%">
+       <div class="container">
+          <h4>Ella Mata</h4>
+         
+
+       </div>
+     </div>
+   </div>
+ </div>
+<br><br>
+
+<?php include 'footer.php';?>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Meal System</h5>
+        <p>“One of the very nicest things about life is the way we<br> must regularly stop whatever it is we are doing <br>and devote our attention to eating.” – Luciano Pavarotti</p></p>
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Reference</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="https://easyfamilyrecipes.com/">Family Recipes</a>
+          </li>
+          <li>
+            <a href="https://panlasangpinoy.com/">Panlasang Pinoy</a>
+          </li>
+          <li>
+            <a href="https://www.delish.com/">Delish Recipes</a>
+          </li>
+          <li>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Quick Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="index.php">Home</a>
+          </li>
+          <li>
+            <a href="healthy-recipes.php">Healthy Recipes</a>
+          </li>
+          <li>
+            <a href="aboutus.php">About Us</a></a>
+          </li>
+        </ul>
+
+      </div>
+
+  <!-- Copyright -->
+  <div class="container footer-copyrightcen">
+    <div class="footer-copyright text-center py-3">Copyright © 2021
+      <a href="index.php"> Meal System</a>
+    </div>
+    <!-- Copyright -->
+  </div>
+
+
+</footer>
+<!-- Footer -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+</body>
+</html>
